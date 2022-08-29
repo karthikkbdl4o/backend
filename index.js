@@ -1,8 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const postsRoutes = require("./routes/postsRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
+
+//Connect to mongo
+mongoose.connect(
+  "mongodb+srv://backend:backend@backend.mltorqs.mongodb.net/?retryWrites=true&w=majority"
+);
+
+const connection = mongoose.connection;
+// Connection Failed
+connection.on("error", () => console.log("Error"));
+// Connection Successfull
+connection.once("open", () => console.log("Connection Successful"));
 
 app.use(express.json());
 
