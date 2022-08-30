@@ -4,7 +4,6 @@ const POST = [
     text: "One",
     authorName: "Ashok Kumar",
     createdAt: new Date(),
-    asg: "asf",
   },
   {
     id: 2,

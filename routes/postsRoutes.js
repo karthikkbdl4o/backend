@@ -1,5 +1,6 @@
 const express = require("express");
 const POST = require("../Constant");
+const Post = require("../models/Post");
 
 const postRoutes = express.Router();
 
@@ -31,12 +32,14 @@ postRoutes.get("/:id", (req, res) => {
   }
 });
 
-postRoutes.post("/", (req, res) => {
-  const post = req.body;
-  post.createdAt = new Date();
-  post.id = 10;
+postRoutes.post("/", async (req, res) => {
+  const post = new Post({
+    text: req.body.text,
+  });
 
-  res.json(post);
+  const savedPost = await post.save();
+
+  res.json({ post: savedPost });
 });
 
 module.exports = postRoutes;

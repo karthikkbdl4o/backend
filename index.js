@@ -7,7 +7,7 @@ const app = express();
 
 //Connect to mongo
 mongoose.connect(
-  "mongodb+srv://backend:backend@backend.mltorqs.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://backend:backend@backend.mltorqs.mongodb.net/backend?retryWrites=true&w=majority"
 );
 
 const connection = mongoose.connection;
@@ -22,6 +22,10 @@ const PORT = 3000;
 
 app.use("/posts", postsRoutes);
 app.use("/users", userRoutes);
+
+app.use("/example", (req, res) => {
+  res.json({ message: "Example" });
+});
 
 app.listen(PORT, () => {
   console.log("Started");
