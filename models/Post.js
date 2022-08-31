@@ -2,9 +2,11 @@ const { mongoose, model } = require("mongoose");
 
 // Structure
 const schema = mongoose.Schema(
+  // Schema Structure
   {
     text: String,
   },
+  // Schema Options
   { timestamps: true }
 );
 
