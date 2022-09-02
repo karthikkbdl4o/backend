@@ -23,6 +23,7 @@ const PORT = 3000;
 app.use("/posts", postsRoutes);
 app.use("/users", userRoutes);
 
+
 app.use("/example", (req, res) => {
   res.json({ message: "Example" });
 });
