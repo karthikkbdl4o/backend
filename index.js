@@ -1,5 +1,7 @@
+const { application } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
+const indexRoute = require("./routes/indexRoute");
 const postsRoutes = require("./routes/postsRoutes");
 const userRoutes = require("./routes/userRoutes");
 
@@ -22,7 +24,7 @@ const PORT = 3000;
 
 app.use("/posts", postsRoutes);
 app.use("/users", userRoutes);
-
+app.use("/", indexRoute);
 
 app.use("/example", (req, res) => {
   res.json({ message: "Example" });

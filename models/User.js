@@ -7,7 +7,7 @@ const schema = mongoose.Schema(
     firstName: String,
     lastName: String,
     email: String,
-    phoneNo: String,
+    phoneNumber: String,
     password: String,
   },
   //Schema Options

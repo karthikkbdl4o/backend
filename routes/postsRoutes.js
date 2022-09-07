@@ -10,7 +10,13 @@ const {
   deletePost,
   updatePost,
 } = require("../services/postService");
-const { createPostValidator } = require("../validators/postValidator");
+
+const {
+  createPostValidator,
+  readPostValidator,
+  deletePostValidator,
+  updatePostValidor,
+} = require("../validators/postValidator");
 
 const postRoutes = express.Router();
 
@@ -22,12 +28,12 @@ postRoutes.post("/", createPostValidator, createPost);
 postRoutes.get("/", readPosts);
 
 // Read One
-postRoutes.get("/:id", readPost);
+postRoutes.get("/:id", readPostValidator, readPost);
 
 //Delete One
-postRoutes.delete("/:id", deletePost);
+postRoutes.delete("/:id", deletePostValidator, deletePost);
 
 //Update One
-postRoutes.put("/:id", updatePost);
+postRoutes.put("/:id", updatePostValidor, updatePost);
 
 module.exports = postRoutes;
