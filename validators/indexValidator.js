@@ -34,3 +34,16 @@ exports.signupValidator = [
     .isStrongPassword()
     .withMessage("Password Is Not Strong"),
 ];
+
+exports.loginValidator = [
+  body("email")
+    .exists()
+    .withMessage("Email Cant Be Empty")
+    .isEmail()
+    .withMessage("Invalid Email Address"),
+  body("password")
+    .exists()
+    .withMessage("Password Cant Be Empty")
+    .isStrongPassword()
+    .withMessage("Password Is Not Strong"),
+];
