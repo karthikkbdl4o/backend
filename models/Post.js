@@ -5,6 +5,7 @@ const schema = mongoose.Schema(
   // Schema Structure
   {
     text: String,
+    userId: String,
   },
   // Schema Options
   { timestamps: true }

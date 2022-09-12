@@ -1,5 +1,6 @@
 const express = require("express");
 const { body } = require("express-validator");
+const basicAuth = require("../middlewear/basicAuth");
 // Constant POST - IGNORE
 
 const Post = require("../models/Post");
@@ -22,10 +23,10 @@ const postRoutes = express.Router();
 
 //CRUD
 // Create Post
-postRoutes.post("/", createPostValidator, createPost);
+postRoutes.post("/", basicAuth, createPostValidator, createPost);
 
 //Read All
-postRoutes.get("/", readPosts);
+postRoutes.get("/", basicAuth, readPosts);
 
 // Read One
 postRoutes.get("/:id", readPostValidator, readPost);
@@ -34,6 +35,6 @@ postRoutes.get("/:id", readPostValidator, readPost);
 postRoutes.delete("/:id", deletePostValidator, deletePost);
 
 //Update One
-postRoutes.put("/:id", updatePostValidor, updatePost);
+postRoutes.put("/:id", basicAuth, updatePostValidor, updatePost);
 
 module.exports = postRoutes;

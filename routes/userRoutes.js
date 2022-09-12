@@ -1,11 +1,11 @@
 const express = require("express");
 
-const auth = require("../middlewear/auth");
+const basicAuth = require("../middlewear/basicAuth");
 
 const { readUsers } = require("../services/userService");
 
 const userRoutes = express.Router();
 
-userRoutes.get("/", auth, readUsers);
+userRoutes.get("/", basicAuth, readUsers);
 
 module.exports = userRoutes;

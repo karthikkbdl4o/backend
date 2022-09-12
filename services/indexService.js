@@ -36,7 +36,7 @@ exports.login = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (user == null)
-    res.status(401).json({ errors: [{ message: "Email Not Found" }] });
+    return res.status(401).json({ errors: [{ message: "Email Not Found" }] });
 
   const result = await bcrypt
     .compare(req.body.password, user.password)
@@ -44,9 +44,9 @@ exports.login = async (req, res, next) => {
       return result;
     });
 
-  console.log(result);
   if (result) {
-    res.json({ message: "Login Successful" });
+    return res.json({ message: "Login Successful" });
   }
+
   res.status(401).json({ message: "Login Failed" });
 };
